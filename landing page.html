@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MicroIntern</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#A7C7E7;--mint:#BEE7C9;--lav:#D7C9E8;--bg:#FAFAF7;--dark:#2E2E2E;}
+body{margin:0;font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);}
+nav{position:fixed;top:0;left:0;right:0;background:white;padding:20px;display:flex;justify-content:space-between;}
+.logo{font-family:'Sora';font-weight:700;font-size:1.5rem;background:linear-gradient(135deg,var(--blue),var(--lav));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.page{display:none;padding-top:120px;padding:120px 40px;}
+.page.active{display:block;}
+.btn{padding:10px 20px;border:none;background:var(--blue);border-radius:10px;cursor:pointer;}
+.card{background:white;padding:20px;border-radius:15px;margin:15px 0;}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">MicroIntern</div>
+<div>
+<button onclick="showPage('home')">Home</button>
+<button onclick="showPage('browse')">Browse</button>
+</div>
+</nav>
+
+<div id="home" class="page active">
+<h1>Real Experience. Short Commitments.</h1>
+<p>Gain skills through 1–4 week internships.</p>
+<button class="btn" onclick="showPage('browse')">Browse Internships</button>
+</div>
+
+<div id="browse" class="page">
+<h1>Browse Internships</h1>
+<div class="card">
+<h3>Social Media Internship</h3>
+<p>2 weeks • Marketing</p>
+</div>
+<div class="card">
+<h3>Python Data Analysis</h3>
+<p>3 weeks • Python</p>
+</div>
+</div>
+
+<script>
+function showPage(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
