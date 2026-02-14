@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MicroIntern</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--blue:#A7C7E7;
+--mint:#BEE7C9;
+--lav:#D7C9E8;
+--bg:#FAFAF7;
+--dark:#2E2E2E;
+}
+body{
+margin:0;
+font-family:'Nunito',sans-serif;
+background:var(--bg);
+color:var(--dark);
+}
+nav{
+position:fixed;
+top:0;left:0;right:0;
+background:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #eee;
+}
+.logo{
+font-family:'Sora',sans-serif;
+font-weight:700;
+font-size:1.5rem;
+background:linear-gradient(135deg,var(--blue),var(--lav));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.btn{
+padding:10px 20px;
+border-radius:10px;
+border:none;
+background:var(--blue);
+cursor:pointer;
+font-weight:600;
+}
+.placeholder{
+padding-top:120px;
+text-align:center;
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">MicroIntern</div>
+<button class="btn">Get Started</button>
+</nav>
+
+<div class="placeholder">
+<h1>Base UI Setup</h1>
+<p>Theme and navigation initialized.</p>
+</div>
+
+</body>
+</html>
