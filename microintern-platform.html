@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroIntern · Real Experience, Short Commitments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pastel-blue: #A7C7E7;
+            --pastel-mint: #BEE7C9;
+            --pastel-lavender: #D7C9E8;
+            --bg-cream: #FAFAF7;
+            --text-dark: #2E2E2E;
+            --text-medium: #5F5F5F;
+            --white: #FFFFFF;
+            --border: #E8E8E5;
+            --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-medium);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Sora', sans-serif;
+            color: var(--text-dark);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* ============= NAVIGATION ============= */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 247, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-lavender));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pastel-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-dark);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* ============= BUTTONS ============= */
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: var(--pastel-blue);
+            color: var(--text-dark);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--pastel-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--pastel-blue);
+        }
+
+        .btn-accent {
+            background: var(--pastel-lavender);
+            color: var(--text-dark);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ============= HERO SECTION ============= */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(167, 199, 231, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(215, 201, 232, 0.15) 0%, transparent 50%),
+                var(--bg-cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, var(--pastel-lavender), transparent);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, var(--pastel-mint), transparent);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -30px) rotate(5deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(-5deg);
+            }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero .gradient-text {
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-lavender));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        /* ============= SECTION LAYOUT ============= */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+        }
+
+        /* ============= HOW IT WORKS ============= */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pastel-blue), var(--pastel-lavender));
+            border-radius: 24px 24px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .step-card:hover::before {
+            opacity: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-lavender));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            transform: rotate(-5deg);
+            transition: transform 0.4s;
+        }
+
+        .step-card:hover .step-number {
+            transform: rotate(0deg) scale(1.1);
+        }
+
+        .step-card:nth-child(2) .step-number {
+            background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-blue));
+        }
+
+        .step-card:nth-child(3) .step-number {
+            background: linear-gradient(135deg, var(--pastel-lavender), var(--pastel-mint));
+        }
+
+        .step-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ============= INTERNSHIP CARDS ============= */
+        .internships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .internship-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .internship-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--pastel-blue), var(--pastel-lavender), var(--pastel-mint));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .internship-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .internship-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .company-badge {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-lavender));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .internship-card:nth-child(even) .company-badge {
+            background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-blue));
+        }
+
+        .internship-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-name {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: var(--pastel-mint);
+            color: var(--text-dark);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .tag.skill {
+            background: var(--pastel-lavender);
+        }
+
+        .tag.duration {
+            background: var(--pastel-blue);
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: #BEE7C9;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .difficulty.intermediate {
+            background: #F5D0A9;
+        }
+
+        /* ============= FILTER BAR ============= */
+        .filter-bar {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--pastel-blue);
+            box-shadow: 0 0 0 4px rgba(167, 199, 231, 0.2);
+        }
+
+        .filter-select {
+            padding: 0.9rem 1.2rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            background: var(--white);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-select:hover {
+            border-color: var(--pastel-blue);
+        }
+
+        /* ============= DASHBOARD ============= */
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 1rem 1.2rem;
+            color: var(--text-medium);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background: var(--pastel-blue);
+            color: var(--text-dark);
+            transform: translateX(5px);
+        }
+
+        .dashboard-content {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .welcome-card {
+            background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-blue));
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .welcome-card h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--pastel-lavender), var(--pastel-blue));
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .progress-bar-container {
+            background: var(--border);
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--pastel-mint), var(--pastel-blue));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            transition: width 1s ease;
+        }
+
+        /* ============= FORMS ============= */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--pastel-blue);
+            box-shadow: 0 0 0 4px rgba(167, 199, 231, 0.2);
+        }
+
+        textarea.form-input {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .upload-area {
+            border: 3px dashed var(--pastel-blue);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            background: rgba(167, 199, 231, 0.05);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-area:hover {
+            background: rgba(167, 199, 231, 0.15);
+            transform: scale(1.02);
+        }
+
+        /* ============= MODAL ============= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .close-modal {
+            cursor: pointer;
+            font-size: 2rem;
+            line-height: 1;
+            color: var(--text-medium);
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--text-dark);
+        }
+
+        /* ============= TOGGLE SWITCH ============= */
+        .toggle-container {
+            background: var(--bg-cream);
+            border-radius: 12px;
+            padding: 0.4rem;
+            display: inline-flex;
+            margin: 1.5rem 0;
+        }
+
+        .toggle-option {
+            padding: 0.8rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .toggle-option.active {
+            background: var(--pastel-blue);
+            color: var(--text-dark);
+        }
+
+        /* ============= AUTH SCREEN ============= */
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(167, 199, 231, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(215, 201, 232, 0.1) 0%, transparent 50%),
+                var(--bg-cream);
+        }
+
+        .auth-box {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            max-width: 450px;
+            width: 90%;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ============= DETAIL PAGE ============= */
+        .detail-header {
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-lavender));
+            padding: 4rem 3rem;
+            border-radius: 24px;
+            margin-bottom: 3rem;
+        }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .detail-main {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .detail-sidebar {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .mentor-card {
+            background: var(--bg-cream);
+            padding: 1.5rem;
+            border-radius: 16px;
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .mentor-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--pastel-lavender);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        /* ============= UTILITIES ============= */
+        .hidden {
+            display: none !important;
+        }
+
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mb-3 { margin-bottom: 3rem; }
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mt-3 { margin-top: 3rem; }
+
+        /* ============= RESPONSIVE ============= */
+        @media (max-width: 1024px) {
+            .dashboard-layout,
+            .detail-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar,
+            .detail-sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .steps-grid,
+            .internships-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+        }
+
+        /* ============= PAGE TRANSITIONS ============= */
+        .page {
+            display: none;
+            animation: pageIn 0.5s ease-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes pageIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">MicroIntern</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
+                <li><a href="#" onclick="showPage('browse')">Browse</a></li>
+                <li><a href="#" onclick="showPage('student-dash')">Dashboard</a></li>
+                <li><a href="#" onclick="showPage('mentor-dash')">For Mentors</a></li>
+            </ul>
+            <div class="nav-cta">
+                <button class="btn btn-secondary" onclick="showPage('auth')">Sign In</button>
+                <button class="btn btn-primary" onclick="showPage('auth')">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE 1: LANDING PAGE -->
+    <div class="page active" id="home">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Real Experience.<br><span class="gradient-text">Short Commitments.</span></h1>
+                <p>Gain practical skills through 1-4 week micro-internships with startups and companies</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showPage('browse')">Find Micro-Internships</button>
+                    <button class="btn btn-accent" onclick="showPage('mentor-dash')">Post a Task</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section>
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Start gaining real experience in three simple steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Browse & Apply</h3>
+                    <p>Explore short-term internships that match your skills and interests. Apply in minutes with your profile.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Work & Learn</h3>
+                    <p>Complete real-world tasks with guidance from experienced mentors. Build your portfolio while learning.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Get Certified</h3>
+                    <p>Receive certificates and recommendations to boost your career prospects and stand out.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED INTERNSHIPS -->
+        <section style="background: var(--white); margin: 0; max-width: 100%;">
+            <div style="max-width: 1400px; margin: 0 auto; padding: 6rem 2rem;">
+                <div class="section-header">
+                    <h2>Featured Opportunities</h2>
+                    <p>Hand-picked micro-internships from top companies</p>
+                </div>
+                <div class="internships-grid">
+                    <div class="internship-card">
+                        <div class="company-badge">🎨</div>
+                        <h3>Social Media Content Creation</h3>
+                        <p class="company-name">TechStartup Inc.</p>
+                        <p>Create engaging social media content for our tech products. Learn content strategy and visual design.</p>
+                        <div class="tags">
+                            <span class="tag duration">2 weeks</span>
+                            <span class="tag skill">Design</span>
+                            <span class="tag skill">Marketing</span>
+                        </div>
+                        <div class="difficulty">Beginner</div>
+                        <button class="btn btn-primary mt-2" style="width: 100%;" onclick="showPage('detail')">View Details</button>
+                    </div>
+
+                    <div class="internship-card">
+                        <div class="company-badge">📊</div>
+                        <h3>Python Data Analysis</h3>
+                        <p class="company-name">DataCorp Solutions</p>
+                        <p>Analyze customer data using Python. Hands-on experience with pandas and matplotlib.</p>
+                        <div class="tags">
+                            <span class="tag duration">3 weeks</span>
+                            <span class="tag skill">Python</span>
+                            <span class="tag skill">Data Science</span>
+                        </div>
+                        <div class="difficulty intermediate">Intermediate</div>
+                        <button class="btn btn-primary mt-2" style="width: 100%;" onclick="showPage('detail')">View Details</button>
+                    </div>
+
+                    <div class="internship-card">
+                        <div class="company-badge">💎</div>
+                        <h3>Mobile App UI/UX Design</h3>
+                        <p class="company-name">Design Studio Pro</p>
+                        <p>Design user interfaces for a mobile fitness app. Work with Figma and learn professional workflows.</p>
+                        <div class="tags">
+                            <span class="tag duration">4 weeks</span>
+                            <span class="tag skill">Figma</span>
+                            <span class="tag skill">UI/UX</span>
+                        </div>
+                        <div class="difficulty intermediate">Intermediate</div>
+                        <button class="btn btn-primary mt-2" style="width: 100%;" onclick="showPage('detail')">View Details</button>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-accent" onclick="showPage('browse')">View All Opportunities →</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE 2: BROWSE / LISTING PAGE -->
+    <div class="page" id="browse">
+        <section style="padding-top: 8rem;">
+            <h1 class="mb-2">Browse Micro-Internships</h1>
+            
+            <!-- FILTERS -->
+            <div class="filter-bar">
+                <input type="text" class="search-input" placeholder="Search internships...">
+                <select class="filter-select">
+                    <option>All Skills</option>
+                    <option>Design</option>
+                    <option>Development</option>
+                    <option>Marketing</option>
+                    <option>Data Science</option>
+                </select>
+                <select class="filter-select">
+                    <option>All Durations</option>
+                    <option>1 week</option>
+                    <option>2 weeks</option>
+                    <option>3 weeks</option>
+                    <option>4 weeks</option>
+                </select>
+                <select class="filter-select">
+                    <option>All Levels</option>
+                    <option>Beginner</option>
+                    <option>Intermediate</option>
+                    <option>Advanced</option>
+                </select>
+            </div>
+
+            <!-- RESULTS -->
+            <div class="internships-grid">
+                <div class="internship-card">
+                    <div class="company-badge">🎨</div>
+                    <h3>Social Media Content Creation</h3>
+                    <p class="company-name">TechStartup Inc.</p>
+                    <p>Create engaging social media content for our tech products. Learn content strategy and visual design.</p>
+                    <div class="tags">
+                        <span class="tag duration">2 weeks</span>
+                        <span class="tag skill">Design</span>
+                        <span class="tag skill">Marketing</span>
+                    </div>
+                    <div class="difficulty">Beginner</div>
+                    <button class="btn btn-primary mt-2" style="width: 100%;" onclick="showPage('detail')">Apply Now</button>
+                </div>
+
+                <div class="internship-card">
+                    <div class="company-badge">📊</div>
+                    <h3>Python Data Analysis</h3>
+                    <p class="company-name">DataCorp Solutions</p>
+                    <p>Analyze customer data using Python. Hands-on experience with pandas and matplotlib.</p>
+                    <div class="tags">
+                        <span class="tag duration">3 weeks</span>
+                        <span class="tag skill">Python</span>
+                        <span class="tag skill">Data Science</span>
+                    </div>
+                    <div class="difficulty intermediate">Intermediate</div>
+                    <button class="btn btn-primary mt-2" style="width: 100%;" onclick="showPage('detail')">Apply Now</button>
+                </div>
+
+                <div class="internship-card">
+                    <div class="company-badge">💎</div>
+                    <h3>Mobile App UI/UX Design</h3>
+                    <p class="company-name">Design Studio Pro</p>
+                    <p>Design user interfaces for a mobile fitness app. Work with Figma and learn professional workflows.</p>
+                    <div class="tags">
+                        <span class="tag duration">4 weeks</span>
+                        <span class="tag skill">Figma</span>
+                        <span class="tag skill">UI/UX</span>
+                    </div>
+                    <div class="difficulty intermediate">Intermediate</div>
+                    <button class="btn btn-primary mt-2" style="width: 100%;" onclick="showPage('detail')">Apply Now</button>
+                </div>
+
+                <div class="internship-card">
+                    <div class="company-badge">✍️</div>
+                    <h3>Content Writing & SEO</h3>
+                    <p class="company-name">Content Agency</p>
+                    <p>Write SEO-optimized blog posts and web content. Learn keyword research and content strategy.</p>
+                    <div class="tags">
+                        <span class="tag duration">3 weeks</span>
+                        <span class="tag skill">Writing</span>
+                        <span class="tag skill">SEO</span>
+                    </div>
+                    <div class="difficulty">Beginner</div>
+                    <button class="btn btn-primary mt-2" style="width: 100%;" onclick="showPage('detail')">Apply Now</button>
+                </div>
+
+                <div class="internship-card">
+                    <div class="company-badge">💻</div>
+                    <h3>React Frontend Development</h3>
+                    <p class="company-name">WebDev Agency</p>
+                    <p>Build responsive components for a client project. Gain experience with React, hooks, and state management.</p>
+                    <div class="tags">
+                        <span class="tag duration">4 weeks</span>
+                        <span class="tag skill">React</span>
+                        <span class="tag skill">JavaScript</span>
+                    </div>
+                    <div class="difficulty intermediate">Advanced</div>
+                    <button class="btn btn-primary mt-2" style="width: 100%;" onclick="showPage('detail')">Apply Now</button>
+                </div>
+
+                <div class="internship-card">
+                    <div class="company-badge">📧</div>
+                    <h3>Email Marketing Campaign</h3>
+                    <p class="company-name">Marketing Pro Co.</p>
+                    <p>Create and manage email campaigns. Learn email marketing best practices and analytics.</p>
+                    <div class="tags">
+                        <span class="tag duration">2 weeks</span>
+                        <span class="tag skill">Marketing</span>
+                        <span class="tag skill">Writing</span>
+                    </div>
+                    <div class="difficulty">Beginner</div>
+                    <button class="btn btn-primary mt-2" style="width: 100%;" onclick="showPage('detail')">Apply Now</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE 3: INTERNSHIP DETAIL PAGE -->
+    <div class="page" id="detail">
+        <section style="padding-top: 8rem;">
+            <div class="detail-header">
+                <h1 style="color: var(--text-dark); margin-bottom: 1rem;">Social Media Content Creation</h1>
+                <p style="font-size: 1.2rem; opacity: 0.9;">TechStartup Inc.</p>
+                <div class="tags mt-2">
+                    <span class="tag duration" style="background: white; color: var(--text-dark);">2 weeks</span>
+                    <span class="tag skill" style="background: white; color: var(--text-dark);">Design</span>
+                    <span class="tag skill" style="background: white; color: var(--text-dark);">Marketing</span>
+                </div>
+            </div>
+
+            <div class="detail-layout">
+                <div class="detail-main">
+                    <h2 class="mb-1">About This Internship</h2>
+                    <p class="mb-3">Join our dynamic team to create engaging social media content for our tech products. You'll learn content strategy, visual design, and how to engage audiences across multiple platforms. This is a fantastic opportunity to build your portfolio while working on real campaigns that reach thousands of users.</p>
+
+                    <h2 class="mb-1">Responsibilities</h2>
+                    <ul style="line-height: 2; margin-bottom: 2rem;">
+                        <li>Create 10-15 social media posts per week</li>
+                        <li>Design graphics using Canva or similar tools</li>
+                        <li>Write engaging captions and hashtags</li>
+                        <li>Schedule posts across Instagram, Twitter, and LinkedIn</li>
+                        <li>Analyze engagement metrics and suggest improvements</li>
+                    </ul>
+
+                    <h2 class="mb-1">What You'll Learn</h2>
+                    <ul style="line-height: 2; margin-bottom: 2rem;">
+                        <li>Social media content strategy and planning</li>
+                        <li>Visual design principles for social platforms</li>
+                        <li>Audience engagement techniques</li>
+                        <li>Analytics and performance tracking</li>
+                    </ul>
+
+                    <h2 class="mb-1">Requirements</h2>
+                    <ul style="line-height: 2;">
+                        <li>Basic design skills (Canva, Figma, or similar)</li>
+                        <li>Strong written communication</li>
+                        <li>Familiarity with major social media platforms</li>
+                        <li>Creative mindset and attention to detail</li>
+                    </ul>
+                </div>
+
+                <div class="detail-sidebar">
+                    <h3 class="mb-1">Quick Info</h3>
+                    <div class="mb-2">
+                        <p><strong>Duration:</strong> 2 weeks</p>
+                        <p><strong>Start Date:</strong> Feb 5, 2026</p>
+                        <p><strong>Commitment:</strong> 10-15 hrs/week</p>
+                        <p><strong>Location:</strong> Remote</p>
+                        <p><strong>Positions:</strong> 2 openings</p>
+                    </div>
+
+                    <div class="mentor-card">
+                        <div class="mentor-avatar">👤</div>
+                        <div>
+                            <p style="font-weight: 700; color: var(--text-dark);">Sarah Johnson</p>
+                            <p style="font-size: 0.9rem;">Marketing Manager</p>
+                            <p style="margin-top: 0.3rem;">⭐ 4.9 (48 reviews)</p>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" style="width: 100%;" onclick="openModal()">Apply for This Internship</button>
+                    <button class="btn btn-secondary mt-1" style="width: 100%;">Save for Later</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE 4: STUDENT DASHBOARD -->
+    <div class="page" id="student-dash">
+        <section style="padding-top: 8rem;">
+            <div class="dashboard-layout">
+                <aside class="sidebar">
+                    <div class="logo">MicroIntern</div>
+                    <ul class="sidebar-menu">
+                        <li><a href="#" class="sidebar-link active">Dashboard</a></li>
+                        <li><a href="#" class="sidebar-link">Browse</a></li>
+                        <li><a href="#" class="sidebar-link">My Applications</a></li>
+                        <li><a href="#" class="sidebar-link">Completed</a></li>
+                        <li><a href="#" class="sidebar-link">Certificates</a></li>
+                        <li><a href="#" class="sidebar-link">Profile</a></li>
+                    </ul>
+                </aside>
+
+                <main class="dashboard-content">
+                    <div class="welcome-card">
+                        <h2>Welcome back, Alex! 👋</h2>
+                        <p style="font-size: 1.1rem;">You're doing great! Keep building your experience.</p>
+                    </div>
+
+                    <h3 class="mb-1">Your Progress</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 65%;">65% Complete</div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Applications</div>
+                        </div>
+                        <div class="stat-card" style="background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-blue));">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                        <div class="stat-card" style="background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-mint));">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">In Progress</div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-3 mb-1">Recommended For You</h3>
+                    <div class="internships-grid">
+                        <div class="internship-card">
+                            <div class="company-badge">✍️</div>
+                            <h3>Content Writing</h3>
+                            <p class="company-name">Content Agency</p>
+                            <div class="tags">
+                                <span class="tag duration">3 weeks</span>
+                                <span class="tag skill">Writing</span>
+                            </div>
+                            <button class="btn btn-primary mt-2" style="width: 100%;">Apply Now</button>
+                        </div>
+
+                        <div class="internship-card">
+                            <div class="company-badge">🎨</div>
+                            <h3>Graphic Design</h3>
+                            <p class="company-name">Design Studio</p>
+                            <div class="tags">
+                                <span class="tag duration">2 weeks</span>
+                                <span class="tag skill">Design</span>
+                            </div>
+                            <button class="btn btn-primary mt-2" style="width: 100%;">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-3 mb-1">Upcoming Deadlines</h3>
+                    <div style="background: var(--bg-cream); padding: 2rem; border-radius: 16px;">
+                        <div style="border-left: 4px solid var(--pastel-blue); padding-left: 1.5rem; margin-bottom: 1.5rem;">
+                            <h4>Data Analysis - Final Submission</h4>
+                            <p style="color: var(--text-medium);">Due: February 10, 2026</p>
+                            <p style="margin-top: 0.5rem; font-weight: 600;">5 days remaining</p>
+                        </div>
+                        <div style="border-left: 4px solid var(--pastel-lavender); padding-left: 1.5rem;">
+                            <h4>Design Task - Review</h4>
+                            <p style="color: var(--text-medium);">Due: February 15, 2026</p>
+                            <p style="margin-top: 0.5rem; font-weight: 600;">10 days remaining</p>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE 5: MENTOR DASHBOARD -->
+    <div class="page" id="mentor-dash">
+        <section style="padding-top: 8rem;">
+            <div class="dashboard-layout">
+                <aside class="sidebar">
+                    <div class="logo">MicroIntern</div>
+                    <ul class="sidebar-menu">
+                        <li><a href="#" class="sidebar-link active">Dashboard</a></li>
+                        <li><a href="#" class="sidebar-link">My Tasks</a></li>
+                        <li><a href="#" class="sidebar-link">Applications</a></li>
+                        <li><a href="#" class="sidebar-link">Active Interns</a></li>
+                        <li><a href="#" class="sidebar-link">Reviews</a></li>
+                    </ul>
+                </aside>
+
+                <main class="dashboard-content">
+                    <div class="welcome-card">
+                        <h2>Welcome, Sarah! 👋</h2>
+                        <p style="font-size: 1.1rem;">Manage your micro-internships and mentor the next generation.</p>
+                        <button class="btn btn-accent mt-2" onclick="openPostModal()">+ Post New Task</button>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Active Tasks</div>
+                        </div>
+                        <div class="stat-card" style="background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-blue));">
+                            <div class="stat-number">24</div>
+                            <div class="stat-label">Applications</div>
+                        </div>
+                        <div class="stat-card" style="background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-lavender));">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-3 mb-1">Recent Applications</h3>
+                    <div class="internships-grid">
+                        <div class="internship-card">
+                            <div style="display: flex; gap: 1rem; align-items: start;">
+                                <div class="mentor-avatar">👤</div>
+                                <div style="flex: 1;">
+                                    <h4>Priya Sharma</h4>
+                                    <p style="font-size: 0.9rem; color: var(--text-medium);">Applied for: Social Media Content</p>
+                                    <div class="tags mt-1">
+                                        <span class="tag skill">Design</span>
+                                        <span class="tag skill">Marketing</span>
+                                    </div>
+                                    <p style="margin-top: 0.8rem;">⭐ 4.5 rating • 2 years exp</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Accept</button>
+                                <button class="btn btn-secondary" style="flex: 1;">View Profile</button>
+                            </div>
+                        </div>
+
+                        <div class="internship-card">
+                            <div style="display: flex; gap: 1rem; align-items: start;">
+                                <div class="mentor-avatar">👤</div>
+                                <div style="flex: 1;">
+                                    <h4>Rahul Verma</h4>
+                                    <p style="font-size: 0.9rem; color: var(--text-medium);">Applied for: Email Marketing</p>
+                                    <div class="tags mt-1">
+                                        <span class="tag skill">Marketing</span>
+                                        <span class="tag skill">Writing</span>
+                                    </div>
+                                    <p style="margin-top: 0.8rem;">⭐ 4.8 rating • 1 year exp</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Accept</button>
+                                <button class="btn btn-secondary" style="flex: 1;">View Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE 6: AUTH PAGE -->
+    <div class="page" id="auth">
+        <div class="auth-container">
+            <div class="auth-box">
+                <div class="auth-header">
+                    <div class="logo mb-2">MicroIntern</div>
+                    <h2>Get Started</h2>
+                    <p>Join thousands of students gaining real experience</p>
+                </div>
+
+                <div class="toggle-container" style="width: 100%;">
+                    <div class="toggle-option active" style="flex: 1; text-align: center;">Student</div>
+                    <div class="toggle-option" style="flex: 1; text-align: center;">Mentor</div>
+                </div>
+
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Create a password">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+                </form>
+
+                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-medium);">
+                    Already have an account? <a href="#" style="color: var(--pastel-blue); font-weight: 600;">Sign In</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: APPLICATION -->
+    <div class="modal-overlay" id="apply-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Apply for Internship</h2>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label class="form-label">Why are you interested?</label>
+                    <textarea class="form-input" placeholder="Tell us why you want this internship..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Resume / Portfolio Link</label>
+                    <input type="url" class="form-input" placeholder="https://...">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: POST INTERNSHIP -->
+    <div class="modal-overlay" id="post-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Post Micro-Internship</h2>
+                <span class="close-modal" onclick="closePostModal()">&times;</span>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label class="form-label">Task Title</label>
+                    <input type="text" class="form-input" placeholder="e.g., Social Media Content Creation">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-input" placeholder="Describe the task..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Duration</label>
+                    <select class="form-input">
+                        <option>1 week</option>
+                        <option>2 weeks</option>
+                        <option>3 weeks</option>
+                        <option>4 weeks</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Post Internship</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update nav links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            window.scrollTo(0, 0);
+        }
+
+        // Modal Controls
+        function openModal() {
+            document.getElementById('apply-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('apply-modal').classList.remove('active');
+        }
+
+        function openPostModal() {
+            document.getElementById('post-modal').classList.add('active');
+        }
+
+        function closePostModal() {
+            document.getElementById('post-modal').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+
+        // Toggle Switch
+        document.querySelectorAll('.toggle-option').forEach(option => {
+            option.addEventListener('click', function() {
+                this.parentElement.querySelectorAll('.toggle-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Form Submit Prevention (for demo)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Form submitted! (This is a demo)');
+            });
+        });
+
+        // Animate progress bar on load
+        window.addEventListener('load', function() {
+            const progressBar = document.querySelector('.progress-bar');
+            if (progressBar) {
+                setTimeout(() => {
+                    progressBar.style.width = '65%';
+                }, 500);
+            }
+        });
+    </script>
+
+</body>
+</html>
